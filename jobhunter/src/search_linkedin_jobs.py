@@ -20,8 +20,9 @@ import os
 import pprint
 
 import requests
-from app import config
+import config
 from dotenv import load_dotenv
+
 
 # Load the .env file
 load_dotenv("../.env")
