@@ -1,17 +1,54 @@
 # GPT Job Hunter
 
-An embeddings-based resume/job matching engine with a decoupled FastAPI backend and Streamlit frontend. The core pipeline: extract job postings from an external search API, transform and load them into SQLite, generate OpenAI embeddings for both the resume and every job description, then rank every posting by cosine similarity against the resume. a 0-100% match score, not a keyword-overlap heuristic.
+<p align="center">
+  <strong>AI-powered resume intelligence, semantic job matching, ATS optimization, and application tracking with a decoupled FastAPI + Streamlit architecture.</strong>
+</p>
 
-**Why embeddings over keyword matching:** a resume and a job posting rarely share exact phrasing even when the underlying skills line up. Embeddings capture that semantic overlap, so "led a cross-functional engineering team" and "managed engineers across departments" score as similar even with zero shared keywords. That's what makes the 0-100% score a real signal instead of a fuzzy string match.
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/Python-3.11%2B-3776AB" alt="Python"></a>
+  <a href="#"><img src="https://img.shields.io/badge/FastAPI-Backend-009688" alt="FastAPI"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Streamlit-Frontend-FF4B4B" alt="Streamlit"></a>
+  <a href="#"><img src="https://img.shields.io/badge/OpenAI-Embeddings-412991" alt="OpenAI"></a>
+  <a href="#"><img src="https://img.shields.io/badge/SQLite-Data-003B57" alt="SQLite"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Docker-Ready-2496ED" alt="Docker"></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-2EA44F" alt="License"></a>
+</p>
 
-**Why a decoupled backend/frontend:** the FastAPI backend (port 8000) owns business logic, the embeddings pipeline, and the database; Streamlit (port 8501) is a pure consumer talking to it over REST. Separating them means the matching engine can be tested, deployed, and scaled independently of the UI. the backend has its own API docs, its own test suite, and its own Docker image.
+<p align="center">
+  <a href="https://github.com/Talha-Techie">GitHub Profile</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#security">Security</a>
+</p>
 
-**Relevant to:** full ML product lifecycle (data ingestion → embeddings → serving → CI/CD), retrieval architecture, service decoupling for independent scaling.
+---
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.52+-red.svg)](https://streamlit.io)
+## Overview
+
+**GPT Job Hunter** is an embeddings-based job-matching platform that compares a candidate's resume against job descriptions using semantic similarity rather than simple keyword overlap. It combines external job ingestion, OpenAI embeddings, cosine-similarity ranking, ATS-oriented resume analysis, AI-assisted resume rewriting, and a visual application tracker.
+
+The backend and frontend are deliberately decoupled: **FastAPI** owns business logic, the embedding pipeline, and persistence, while **Streamlit** consumes the backend over REST. This allows the matching engine and UI to be tested, deployed, and scaled independently.
+
+### Business / Engineering Value
+
+- Semantic resume-to-job matching with 0–100% similarity scores.
+- Automatic resume analysis and ATS optimization guidance.
+- AI-powered resume rewriting for target opportunities.
+- Smart job-title suggestions and advanced job filters.
+- Kanban-style application pipeline tracking.
+- Independent FastAPI backend and Streamlit frontend.
+
+## Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | FastAPI |
+| Frontend | Streamlit |
+| AI | OpenAI embeddings / GPT capabilities |
+| Similarity | Cosine similarity |
+| Database | SQLite |
+| Job data | External search API / RapidAPI |
+| Deployment | Docker / Docker Compose |
 
 ---
 
@@ -81,7 +118,7 @@ Manage your entire job search pipeline with a beautiful **Kanban-style board**. 
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 ### For Job Seekers
 
@@ -120,11 +157,11 @@ Manage your entire job search pipeline with a beautiful **Kanban-style board**. 
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/GPT-Jobhunter.git
+git clone https://github.com/Talha-Techie/GPT-Jobhunter.git
 cd GPT-Jobhunter
 
 # 2. Set up your API keys
@@ -200,7 +237,7 @@ GPT Job Hunter needs two API keys to function:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Here's how to get started:
 
@@ -256,7 +293,7 @@ We welcome contributions! Here's how to get started:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -273,8 +310,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/GPT-Jobhunter/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/GPT-Jobhunter/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Talha-Techie/GPT-Jobhunter/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Talha-Techie/GPT-Jobhunter/discussions)
 - **Email**: support@gptjobhunter.com *(if applicable)*
 
 ---
@@ -285,6 +322,53 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Made with ❤️ by job seekers, for job seekers
 
-[Get Started](INSTALLATION.md) • [Report Bug](https://github.com/yourusername/GPT-Jobhunter/issues) • [Request Feature](https://github.com/yourusername/GPT-Jobhunter/issues)
+[Get Started](INSTALLATION.md) • [Report Bug](https://github.com/Talha-Techie/GPT-Jobhunter/issues) • [Request Feature](https://github.com/Talha-Techie/GPT-Jobhunter/issues)
 
 </div>
+
+---
+
+## Security
+
+For production use, treat uploaded documents, prompts, model outputs, credentials, user data, and tool/API responses as potentially sensitive.
+
+Recommended controls include:
+
+- Keep secrets in environment variables or a dedicated secret manager.
+- Never commit `.env` files, API keys, database passwords, or tokens.
+- Validate and constrain all external inputs before processing.
+- Apply authentication and authorization to production endpoints where appropriate.
+- Use least-privilege access for databases, tools, cloud resources, and service accounts.
+- Enforce HTTPS/TLS at the deployment boundary.
+- Add request limits, timeouts, structured logging, and dependency scanning.
+- Review model/tool outputs before allowing irreversible actions.
+
+> Security, compliance, SSO, RBAC, or enterprise governance capabilities should only be advertised when they are implemented and verified in the deployed environment.
+
+## Production Considerations
+
+Before operating this project in a production environment, consider adding or validating:
+
+- Centralized logs and metrics
+- Health and readiness checks
+- Request tracing and correlation IDs
+- Rate limiting and abuse controls
+- Persistent state and backup strategy
+- CI/CD quality gates
+- Dependency and container vulnerability scanning
+- Model/LLM latency, reliability, and cost monitoring where applicable
+- Horizontal scaling and externalized state where required
+
+
+## Maintainer
+
+Maintained by **Talha-Techie**.
+
+- GitHub: [github.com/Talha-Techie](https://github.com/Talha-Techie)
+
+
+---
+
+<p align="center">
+  <strong>Designed as a clean, modular, production-oriented AI/ML engineering project.</strong>
+</p>
